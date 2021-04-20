@@ -11,7 +11,8 @@ const messageTwo = document.querySelector('#message-2');
 
 
 const getForecast = (address) => {
-    const weatherUrl = 'http://localhost:3000/weather?address=' + encodeURIComponent(address);
+    // const weatherUrl = 'http://localhost:3000/weather?address=' + encodeURIComponent(address);
+    const weatherUrl = '/weather?address=' + encodeURIComponent(address);
 
     messageOne.textContent = 'Loading ....';
     messageTwo.textContent = '';

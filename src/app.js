@@ -14,6 +14,8 @@ console.log(publicDirectoryPath);
 
 const app = express();
 
+const port = process.env.PORT || 3000
+
 // Setup handlebars engine and views locations.
 app.set('view engine', 'hbs');
 app.set('views', viewsPath);
@@ -96,9 +98,6 @@ app.get('*', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
-});
 
 const getForecast = (locName, clbFnc) => {
 
@@ -136,3 +135,7 @@ const getForecast = (locName, clbFnc) => {
 
     });
 }
+
+app.listen(port, () => {
+    console.log('Server is up on port ' + port);
+});
