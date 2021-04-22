@@ -8,6 +8,7 @@ const weatherForm = document.querySelector('form');
 const searchElement = document.querySelector('input');
 const messageOne = document.querySelector('#message-1');
 const messageTwo = document.querySelector('#message-2');
+const messageThree = document.querySelector('#message-3');
 
 
 const getForecast = (address) => {
@@ -15,16 +16,18 @@ const getForecast = (address) => {
     const weatherUrl = '/weather?address=' + encodeURIComponent(address);
 
     messageOne.textContent = 'Loading ....';
-    messageTwo.textContent = '';
+    messageTwo.textContent = messageThree.textContent = '';
 
     fetch(weatherUrl).then((responst) => {
         responst.json().then((data) => {
             if (data.error) {
                 messageOne.textContent = '';
                 messageTwo.textContent = data.error;
+                messageThree.textContent = '';
             } else {
                 messageOne.textContent = ' Temp: ' + data.temperature;
                 messageTwo.textContent = 'feelslike: ' + data.feelslike;
+                messageThree.textContent = 'Location: ' + data.location;
             }
         });
     });

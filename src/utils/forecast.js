@@ -59,6 +59,7 @@ const forecast = (longitude, latitude, callback) => {
                 callback('Error -  type:' + body.error.type + ' info: ' + body.error.info, undefined)
             } else {
                 const current = body.current;
+                const location = body.location;
                 console.log('the current temperature is: ' + current.temperature + ' feels like: ' + current.feelslike);
                 const temperature = current.temperature;
                 const feelslike = current.feelslike;
@@ -66,7 +67,7 @@ const forecast = (longitude, latitude, callback) => {
                 callback(undefined, {
                     temperature,
                     feelslike,
-                    location: body.location.name
+                    location: location.name + ', region: ' + location.region + ', ' + location.country
                 });
             }
         }
